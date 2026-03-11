@@ -1,0 +1,10 @@
+11eb767810098fe6e3c106d8c672937a  ncbi_dataset/data/data_summary.tsv
+d28e6fa447768fa890525c17808ebebd  ncbi_dataset/data/assembly_data_report.jsonl
+75f7cdea67bd446b2be4c23ae0b08608  ncbi_dataset/data/GCA_002759435.2/cds_from_genomic.fna
+185b34ac8b377b89e99a98f2cb45883e  ncbi_dataset/data/GCA_002759435.2/genomic.gbff
+6e4a0b5a3c887883674a6ae1f2b860fc  ncbi_dataset/data/GCA_002759435.2/GCA_002759435.2_Cand_auris_B8441_V2_genomic.fna
+999740f35a0b738f9bd4320281df1f18  ncbi_dataset/data/GCA_002759435.2/genomic.gff
+f179b0d04563e3c5849e35cd188ed113  ncbi_dataset/data/GCA_002759435.2/genomic.gtf
+e21ce1b5513f17813cdb63a7a90c43ef  ncbi_dataset/data/GCA_002759435.2/protein.faa
+14a5233f8b1f95759ede068aae2c2f63  ncbi_dataset/data/GCA_002759435.2/sequence_report.jsonl
+5e8bbb43900de72005c6760c4484ede0  ncbi_dataset/data/dataset_catalog.json

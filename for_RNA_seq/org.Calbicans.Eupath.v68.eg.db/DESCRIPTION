@@ -1,0 +1,13 @@
+Package: org.Calbicans.Eupath.v68.eg.db
+Title: Genome wide annotation for Candida albicans.Eupath.v68
+Description: Genome wide annotation for Candida albicans.Eupath.v68, primarily based on mapping using Entrez Gene identifiers.
+Version: 68.0
+Author: Trinh Phan <phancanht99@univie.ac.at>
+Maintainer: Trinh Phan <phancanht99@univie.ac.at>
+Depends: R (>= 2.7.0), methods, AnnotationDbi (>= 1.64.1)
+Suggests: DBI, annotate, RUnit
+License: Artistic-2.0
+organism: Candida albicans.Eupath.v68
+species: Candida albicans.Eupath.v68
+biocViews: OrgDb, annotation
+

@@ -1,0 +1,16 @@
+files	group	description
+counts/GSM8413969_S4_48_1.final.bam.count.txt	WT	WT_1
+counts/GSM8413970_S5_48_2.final.bam.count.txt	WT	WT_2
+counts/GSM8413971_S6_48_3.final.bam.count.txt	WT	WT_3
+counts/GSM8413972_F1_185_1.final.bam.count.txt	R1	R1_1
+counts/GSM8413973_F2_185_2.final.bam.count.txt	R1	R1_2
+counts/GSM8413974_F3_185_3.final.bam.count.txt	R1	R1_3
+counts/GSM8413975_F4_188_1.final.bam.count.txt	S1	S1_1
+counts/GSM8413976_F5_188_2.final.bam.count.txt	S1	S1_2
+counts/GSM8413977_F6_188_3.final.bam.count.txt	S1	S1_3
+counts/GSM8413978_F7_189_1.final.bam.count.txt	R2	R2_1
+counts/GSM8413979_F8_189_2.final.bam.count.txt	R2	R2_2
+counts/GSM8413980_F9_189_3.final.bam.count.txt	R2	R2_3
+counts/GSM8413981_F10_191_1.final.bam.count.txt	I1	I1_1
+counts/GSM8413982_F11_191_2.final.bam.count.txt	I1	I1_2
+counts/GSM8413983_F12_191_3.final.bam.count.txt	I1	I1_3

@@ -2,7 +2,8 @@
 
 ###download annotation file from: https://fungidb.org/common/downloads/Current_Release/CalbicansSC5314/gaf/
 #then read downloaded file
-finch <- read.delim("SC5314_fungiDB/FungiDB-63_CalbicansSC5314_GO.gaf", skip = 1, header = F)
+# UPDATED: Using FungiDB-68 as it is the current available version
+finch <- read.delim("SC5314_fungiDB/FungiDB-68_CalbicansSC5314_GO.gaf", skip = 1, header = F)
 
 #in the file there are a lot of blank line --> I just remove
 finch <- finch[finch$V2!="",]
@@ -21,6 +22,7 @@ colnames(fGO) <- c("GID","GO","EVIDENCE")
 fSym$GID <- as.character(fSym$GID)
 fGO$GID <- as.character(fGO$GID)
 
+library(dplyr)
 fSym <- dplyr::distinct(fSym, .keep_all = TRUE) #subset unique data
 fGO <- dplyr::distinct(fGO, .keep_all = TRUE) #subset unique data
 
@@ -31,25 +33,24 @@ fGO<- fGO[is.na(fGO$GO)==FALSE, ] #remove NA value
 
 library(AnnotationForge)  #to make org database
 
+# UPDATED: Use version 68.0
 makeOrgPackage(gene_info=fSym, go=fGO,
-               version="0.1",
-               maintainer="Trinh Phan <phancanht99@univie.ac.at>",  #only first name and last name -- other way doesn't work
+               version="68.0",
+               maintainer="Trinh Phan <phancanht99@univie.ac.at>",
                author="Trinh Phan <phancanht99@univie.ac.at>",
                outputDir = ".",
                tax_id="5314",
                genus="Candida",
-               species="albicans.Eupath.v63", #I used here v63 of fungidb
+               species="albicans.Eupath.v68",
                goTable="go")
 
-## then you can call install.packages
-
-install.packages("./org.Calbicans.Eupath.v63.eg.db/", repos = NULL, type = "source") ### strict this for window; or this is for Unix: install.packages("org.CalbicansSC5324V63.eg.db", repos = NULL)
-
+# Install the generated package
+install.packages("./org.Calbicans.Eupath.v68.eg.db/", repos = NULL, type = "source")
 
 ####now try the package
-library(org.Calbicans.Eupath.v63.eg.db)
+library(org.Calbicans.Eupath.v68.eg.db)
 
-some_genes <- sample(x=fSym$GID, size=500)
+# Use some genes from fSym to test
 some_genes <- c("C2_08510W_A","CR_04760C_A","C3_03360W_A","C6_03030W_A","C3_06320W_A","C7_01420W_A",
                 "C1_12680W_A","C3_04730C_A","C4_00990W_A","C7_03580C_A","C5_00830C_A","C1_00650C_A",
                 "C1_09810W_A","C2_01440C_A","C1_02500W_A","C1_05430W_A","C1_10300W_A","C4_04870C_A","C7_01810W_A",
@@ -107,18 +108,17 @@ some_genes <- c("C2_08510W_A","CR_04760C_A","C3_03360W_A","C6_03030W_A","C3_0632
                 "C5_04530W_A","C3_04360W_A","CR_00660W_A","C3_04640W_A","C2_05070W_A","C4_05290W_A","C3_02270W_A","C4_04910C_A",
                 "C4_04160W_A","C1_02050C_A","C5_01070C_A","C4_03020W_A","C2_08590W_A","C1_00370W_A","C4_04180C_A","C1_09990W_A","C2_09610W_A","C2_09100C_A","C3_01170W_A","C2_01660C_A","CR_01720W_A","C5_04840C_A","C2_07730W_A","C3_00600W_A","CR_01420W_A","C4_02540W_A","C6_03880W_A","CR_04310C_A","C5_03850W_A","CR_08490W_A","C1_11810W_A","C1_10680C_A","CR_07510W_A","C2_10750C_A","C7_03680W_A","C1_03120W_A","C2_09860C_A","C2_09690C_A","CR_07270C_A","C3_05660C_A","C7_01180W_A","C3_02110W_A","C5_02360C_A","C4_04670C_A","C2_08460C_A","C3_07090W_A","CR_07110C_A","C3_00720W_A","CR_05990C_A","C4_03720C_A","C7_00440C_A","C2_03880C_A","C2_04120C_A","C5_00150C_A","C2_01650W_A","C1_00390W_A","C1_09070W_A","C2_03060W_A","C7_04070C_A","CR_03170W_A","C4_00440C_A","C5_01930W_A","C4_03040W_A","C7_01250W_A","C2_00450C_A","C1_01000C_A","C1_10710C_A","C5_00140C_A","C1_12170C_A","CR_10040W_A","C2_02370C_A","C6_01450C_A","C2_05080C_A","C3_03690W_A","C6_00630W_A","C4_05090C_A","C2_07070W_A","C6_04310W_A","C6_00880W_A","C7_02880C_A","C5_05480W_A","C1_02600W_A","C3_05100C_A","CR_06380C_A","C1_13930W_A","C4_01100C_A","C1_04780C_A","C5_03740W_A")
 
+# UPDATED: Use the correct package name
 GO <- clusterProfiler::enrichGO(
   some_genes,
-  org.Calbicans.Eupath.v63.eg.db,
+  org.Calbicans.Eupath.v68.eg.db,
   keyType = "GID",
   pvalueCutoff = 1)
 
-enrichplot::cnetplot(GO, showCategory = 5)
-
-barplot(GO)
-
-enrichplot::dotplot(GO)
-
-
-
-
+pdf("GO_results_v68.pdf")
+if (!is.null(GO)) {
+  print(enrichplot::cnetplot(GO, showCategory = 5))
+  print(barplot(GO))
+  print(enrichplot::dotplot(GO))
+}
+dev.off()
