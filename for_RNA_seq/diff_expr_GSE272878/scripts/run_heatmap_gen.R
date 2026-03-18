@@ -54,7 +54,7 @@ h <- Heatmap(as.matrix(mat_logfc),
         name = "Log2 FC",
         col = col_fun,
         cluster_rows = TRUE,
-        cluster_columns = FALSE, 
+        cluster_columns = TRUE, 
         clustering_distance_rows = "pearson",
         row_labels = row_labels,
         row_names_gp = gpar(fontsize = 9),
@@ -77,3 +77,4 @@ dev.off()
 png("../results/plots/Heatmap_Tolerant_vs_Sensitive.png", width = 900, height = 1200, res = 120)
 draw(h)
 dev.off()
+
