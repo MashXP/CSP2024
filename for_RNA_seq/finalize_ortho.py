@@ -2,9 +2,9 @@ import csv
 import re
 
 gff_path = 'cauris_v2/ncbi_dataset/data/GCA_002759435.2/genomic.gff'
-blast_path = 'Ortho_v2_blast.txt'
+blast_path = 'Ortho_v3_blast.txt'
 alb_fasta_path = 'SC5314_fungiDB/FungiDB-68_CalbicansSC5314_AnnotatedProteins.fasta'
-output_path = 'Ortho_v2.csv'
+output_path = 'Ortho_v3.csv'
 
 # Step 1: Extract Auris protein info from GFF (start, end, locus_tag)
 # Example: PEKT02000007.1 Genbank CDS 2 1229 . - 0 ID=cds-PIS51016.1;...locus_tag=B9J08_002585;...protein_id=PIS51016.1;...
@@ -57,7 +57,7 @@ header = ['protAlbicans', 'geneID', 'protAuris', 'start', 'end', 'ANNOT_GENE_NAM
 processed_auris = set()
 
 with open(blast_path, 'r') as f_in, open(output_path, 'w', newline='') as f_out:
-    reader = csv.reader(f_in)
+    reader = csv.reader(f_in, delimiter='\t')
     writer = csv.DictWriter(f_out, fieldnames=header)
     writer.writeheader()
     
@@ -94,4 +94,4 @@ with open(blast_path, 'r') as f_in, open(output_path, 'w', newline='') as f_out:
         })
         processed_auris.add(pis_id)
 
-print(f"Finalized Ortho_v2.csv with {len(processed_auris)} best hits matching original headers.")
+print(f"Finalized Ortho_v3.csv with {len(processed_auris)} best hits matching original headers.")

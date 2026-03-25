@@ -128,7 +128,7 @@ print(plot_pca + geom_text(aes(label=d$samples$description), vjust = 1.5, size =
 dev.off()
 
 # Ortholog mapping
-CaOrth_path <- "../../Ortho_v2.csv"
+CaOrth_path <- "../../Ortho_v3.csv"
 IDtable_path <- "../../A22_A19_names.txt"
 
 if (file.exists(CaOrth_path) && file.exists(IDtable_path)) {
